@@ -1,4 +1,5 @@
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
 
 module.exports = {
     entry: "./public/bundle_entry",
@@ -10,6 +11,11 @@ module.exports = {
     plugins: [
         new miniCssExtractPlugin({
             filename: `../css/keybase.min.css`,
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
         }),
     ],
     node: {

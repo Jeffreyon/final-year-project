@@ -13,4 +13,6 @@ function toggle_owlcarousel() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", toggle_owlcarousel);
+document.addEventListener("DOMContentLoaded", function (e) {
+    toggle_owlcarousel();
+});
