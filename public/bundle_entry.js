@@ -3,11 +3,14 @@ require("./css/tailwind.css");
 require("./css/custom.css");
 
 // js files
-const noui = require("./vendor/nouislider/nouislider");
-const owl = require("./vendor/owlcarousel/owl.carousel.js");
+require("./js/jquery");
+require("./js/global");
+require("./js/layouts_auth");
+require("./js/layouts_dashboard");
+require("./js/layouts_main");
+require("./js/nouislider_config");
+require("./js/owlcarousel_config");
+require("./js/wNumb");
 
-fs.readdirSync("js").forEach((file) => {
-    if (file.substring(-3) == ".js") {
-        let file = require("./js" + file);
-    }
-});
+require("./vendor/nouislider/nouislider");
+require("./vendor/owlcarousel/owl.carousel.js");

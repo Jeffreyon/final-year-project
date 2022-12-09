@@ -12,6 +12,9 @@ module.exports = {
             filename: `../css/keybase.min.css`,
         }),
     ],
+    node: {
+        global: false,
+    },
     module: {
         rules: [
             {
