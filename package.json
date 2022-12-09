@@ -11,7 +11,6 @@
     "main": "app.js",
     "author": "Jeffrey Onuigbo",
     "license": "ISC",
-    "description": "Stashroom - A platform for finding and booking places to stay in school =========",
     "directories": {
         "lib": "lib"
     },
