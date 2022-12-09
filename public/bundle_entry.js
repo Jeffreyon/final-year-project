@@ -4,8 +4,8 @@ require("./css/custom.css");
 
 // js files
 window.$ = require("jquery");
-const noUiSlider = require("./vendor/nouislider/nouislider");
-const owlCarousel = require("./vendor/owlcarousel/owl.carousel.js");
+window.noUiSlider = require("./vendor/nouislider/nouislider");
+window.owlCarousel = require("./vendor/owlcarousel/owl.carousel.js");
 
 require("./js/global");
 require("./js/layouts_auth");
