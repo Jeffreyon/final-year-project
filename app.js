@@ -22,9 +22,7 @@ switch (app.get("env")) {
         break;
     }
     case "production": {
-        var logger = require("express-logger")({
-            path: __dirname + "/log/requests.log",
-        });
+        var logger = require("morgan")("combined");
         break;
     }
 }
