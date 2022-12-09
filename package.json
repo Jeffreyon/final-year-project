@@ -11,7 +11,7 @@
         "minify:js": "npx uglifyjs -o public/dist/js/keybase.min.js public/dist/js/keybase.js",
         "build:css": "npm run tailwind && npm run concat:css && npm run minify:css",
         "build:js": "npm run concat:js && npm run minify:js",
-        "build": "npm run mkdirs && npm-run-all --parallel build:*",
+        "build": "npm run mkdirs && npx npm-run-all --parallel build:*",
         "start": "npm run build && node app.js",
         "prod": "set NODE_ENV=production&&nodemon app.js",
         "dev": "nodemon -r dotenv/config app.js",
