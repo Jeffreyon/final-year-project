@@ -1,0 +1,299 @@
+<main class="w-full md:max-w-3xl xl:max-w-5xl px-3 mx-auto">
+    <a href="/dashboard" class=" text-gray-600 hover:text-gray-700 text-sm"><i
+            class="fa fa-th-large mr-1"></i>Dashboard</a>
+    <div class="mt-8">
+        <h2 class=" text-lg font-semibold text-gray-700">Add Lodge</h2>
+        <div class="my-5 border-t border-gray-400"></div>
+        <form action="/dashboard/add-lodge" method="POST" class="w-full sm:w-2/3 md:w-1/2 xl:w-2/5">
+            <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+            <fieldset class="p-3 border border-gray-400 rounded-md mt-4" name="lodge">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Lodge</legend>
+                <div>
+                    <div class=" mt-3">
+                        <label for="lodgeName" class=" font-semibold text-gray-600">Name</label>
+                        <input type="text" id="lodgeName" name="lodgeName" required="true"
+                            class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                        <p id="emailError" class="text-xs"></p>
+                    </div>
+                    <div class="mt-3">
+                        <label for="roomType" class=" text-gray-600 font-semibold">Room type</label>
+                        <div class="relative">
+                            <select
+                                class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                name="roomType" id="roomType">
+                                {{#form_data 'room_types'}}
+                                {{#if room_types}}
+                                {{#each room_types}}
+                                <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                                {{/if}}
+                                {{/form_data}}
+                            </select>
+                            <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                        </div>
+                    </div>
+                    <div class=" mt-3 flex">
+                        <div>
+                            <label for="beds" class=" font-semibold text-gray-600 block">Beds</label>
+                            <input type="number" id="beds" name="beds" required="true"
+                                class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                        </div>
+                        <div class="ml-4">
+                            <label for="baths" class=" font-semibold text-gray-600 block">Baths</label>
+                            <input type="number" id="baths" name="baths" required="true"
+                                class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label for="withKitchen" class=" text-gray-600 font-semibold">With Kichen?</label>
+                        <div class="relative">
+                            <select
+                                class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                name="withKitchen" id="withKitchen">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                            <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="p-3 border border-gray-400 rounded-md mt-4" name="landlord">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Landlord</legend>
+                <div>
+                    <div>
+                        <div class=" mt-2">
+                            <label for="landlordName" class=" font-semibold text-gray-600">Name</label>
+                            <input type="text" id="landlordName" name="landlordName" required="true"
+                                class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                        </div>
+                    </div>
+                    <div>
+                        <div class=" mt-2">
+                            <label for="landlordPhone" class=" font-semibold text-gray-600">Phone</label>
+                            <input type="tel" id="landlordPhone" name="landlordPhone" required="true"
+                                placeholder="0801-234-5678"
+                                class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="p-3 border border-gray-400 rounded-md mt-4" name="curfew">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Curfew</legend>
+                <div class="mt-3 flex">
+                    {{#form_data 'curfew_times'}}
+                        {{#if curfew_times}}
+                            <div class=" w-1/2 relative">
+                                <label for="curfewOpens" class=" font-semibold text-gray-600 block">Opens (AM)</label>
+                                <select
+                                    class="select-box-arrow appearance-none border border-gray-200 shadow focus:outline-none focus:shadow-outline mt-1 bg-white px-4 py-3 block w-full rounded-md"
+                                    name="curfewOpens" id="">
+                                    {{#each curfew_times.opens}}
+                                    <option value="{{this}}">{{this}}</option>
+                                    {{/each}}
+                                </select>
+                                <i class="fa fa-chevron-down absolute top-0 right-0 m-12 mr-4 text-gray-600"></i>
+                            </div>
+                            <div class=" w-1/2 ml-3 relative">
+                                <label for="curfewCloses" class=" font-semibold text-gray-600 block">Closes (PM)</label>
+                                <select
+                                    class="select-box-arrow appearance-none border border-gray-200 shadow focus:outline-none focus:shadow-outline mt-1 bg-white px-4 py-3 block w-full rounded-md"
+                                    name="curfewCloses" id="">
+                                    {{#each curfew_times.closes}}
+                                    <option value="{{this}}">{{this}}</option>
+                                    {{/each}}
+                                </select>
+                                <i class="fa fa-chevron-down absolute top-0 right-0 m-12 mr-4 text-gray-600"></i>
+                            </div>
+                        {{/if}}
+                    {{/form_data}}
+                </div>
+            </fieldset>
+            <fieldset class="p-3 border border-gray-400 rounded-md mt-4" name="location">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Location</legend>
+                <div class="mt-3">
+                    <div>
+                        <label for="area" class=" text-gray-600 font-semibold">Area</label>
+                        <div class="relative">
+                            <select
+                                class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                name="area" id="area">
+                                {{#form_data 'areas'}}
+                                {{#if areas}}
+                                {{#each areas}}
+                                <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                                {{/if}}
+                                {{/form_data}}
+                            </select>
+                            <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                        </div>
+                    </div>
+                    <fieldset class="p-3 border border-gray-400 rounded-md mt-4" name="geocode">
+                        <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Geocode (Co-ordinates)</legend>
+                        <div class="mt-3 flex">
+                            <div class=" w-1/2">
+                                <label for="geocodeLat" class=" font-semibold text-gray-600 block">Latitude</label>
+                                <input type="text" id="geocodeLat" name="geocodeLat" required="true" placeholder="12.345"
+                                    class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                            </div>
+                            <div class=" w-1/2 ml-3">
+                                <label for="geocodeLong" class=" font-semibold text-gray-600 block">Longitude</label>
+                                <input type="text" id="geocodeLong" name="geocodeLong" required="true" placeholder="12.345"
+                                    class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </fieldset>
+            <!-- Optionals -->
+            <div class="mt-6 flex justify-end">
+                <div class="text-gray-700">
+                    <input type="checkbox" name="withBills" id="withBills">
+                    <label for="withBills">Bills included</label>
+                </div>
+            </div>
+            <fieldset disabled=true class="p-3 border border-gray-400 opacity-50 rounded-md" name="bills">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Bills</legend>
+                <div>
+                    <div class="bill-template mt-3">
+                        <label for="bills" class=" font-semibold text-gray-600">Bill</label>
+                        <div class="relative">
+                            <select
+                                class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                name="bills" id="bills" required="true">
+                                {{#form_data 'lodge'}}
+                                    {{#if lodge}}
+                                        {{#each lodge.bills}}
+                                        <option value="{{this}}">{{this}}</option>
+                                        {{/each}}
+                                    {{/if}}
+                                {{/form_data}}
+                            </select>
+                            <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                        </div>
+                        <div class="flex mt-1">
+                            <div class=" w-1/2">
+                                <label for="billAmounts" class=" font-semibold text-gray-600 block">Amount</label>
+                                <input type="number" id="billAmounts" name="billAmounts" required="true"
+                                    class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                            </div>
+                            <div class="ml-4 w-1/2">
+                                <label for="billTypes" class=" text-gray-600 font-semibold">Bill type</label>
+                                <div class="relative">
+                                    <select
+                                        class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                        name="billTypes" id="billTypes">
+                                        <option value="mo">Monthly</option>
+                                        <option value="yr">Yearly</option>
+                                    </select>
+                                    <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 flex items-center justify-between border-t border-gray-400">
+                    <button id="add-bill"
+                        class="px-3 py-2 mt-3 rounded-md font-semibold text-sm tracking-wider bg-green-200 text-green-600 focus:outline-none focus:shadow-outline transition duration-150"><i
+                            class="fa fa-plus mr-1"></i>Add bill</button>
+                    <button id="remove-bill"
+                        class="mt-3 remove-item font-semibold text-sm text-red-500 focus:outline-none"><i
+                            class="fa fa-times mr-1"></i>Remove</button>
+                </div>
+            </fieldset>
+            <div class="mt-6 flex justify-end">
+                <div class="text-gray-700">
+                    <input type="checkbox" name="withAmenities" id="withAmenities">
+                    <label for="withAmenities">Amenities included</label>
+                </div>
+            </div>
+            <fieldset disabled=true class="p-3 border border-gray-400 opacity-50 rounded-md" name="amenities">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Amenities</legend>
+                <div class="mt-3">
+                    <div class="amenity-template mt-3">
+                        <div class="relative">
+                            <select
+                                class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                name="amenities" id="amenities" required="true">
+                                {{#form_data 'lodge'}}
+                                    {{#if lodge}}
+                                        {{#each lodge.amenities}}
+                                        <option value="{{this}}">{{this}}</option>
+                                        {{/each}}
+                                    {{/if}}
+                                {{/form_data}}
+                            </select>
+                            <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 flex items-center justify-between border-t border-gray-400">
+                    <button id="add-amenity"
+                        class="px-3 py-2 mt-3 rounded-md font-semibold text-sm tracking-wider bg-green-200 text-green-600 focus:outline-none focus:shadow-outline transition duration-150"><i
+                            class="fa fa-plus mr-1"></i>Add amenity</button>
+                    <button id="remove-amenity"
+                        class="mt-3 remove-item font-semibold text-sm text-red-500 focus:outline-none"><i
+                            class="fa fa-times mr-1"></i>Remove</button>
+                </div>
+            </fieldset>
+            <div class="mt-6 flex justify-end">
+                <div class="text-gray-700">
+                    <input type="checkbox" name="withRules" id="withRules">
+                    <label for="withRules">Rules included</label>
+                </div>
+            </div>
+            <fieldset disabled=true class="p-3 border border-gray-400 opacity-50 rounded-md" name="rules">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">Rules</legend>
+                <div class="mt-3">
+                    <div class="rule-template mt-3">
+                        <div class="flex">
+                            <div class="w-2/3">
+                                <label for="rules" class=" text-gray-600 font-semibold">Rule</label>
+                                <div class="relative">
+                                    <select
+                                        class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                        name="rules" id="rules" required="true">
+                                        {{#form_data 'lodge'}}
+                                            {{#if lodge}}
+                                                {{#each lodge.rules}}
+                                                <option value="{{this}}">{{this}}</option>
+                                                {{/each}}
+                                            {{/if}}
+                                        {{/form_data}}
+                                    </select>
+                                    <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                                </div>
+                            </div>
+                            <div class=" w-1/3 ml-2">
+                                <label for="rulesAllowed" class=" text-gray-600 font-semibold">Allowed</label>
+                                <div class="relative">
+                                    <select required="true"
+                                        class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                                        name="rulesAllowed" id="rulesAllowed">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                    </select>
+                                    <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 flex items-center justify-between border-t border-gray-400">
+                    <button id="add-rule"
+                        class="px-3 py-2 mt-3 rounded-md font-semibold text-sm tracking-wider bg-green-200 text-green-600 focus:outline-none focus:shadow-outline transition duration-150"><i
+                            class="fa fa-plus mr-1"></i>Add rule</button>
+                    <button id="remove-rule"
+                        class="mt-3 remove-item font-semibold text-sm text-red-500 focus:outline-none"><i
+                            class="fa fa-times mr-1"></i>Remove</button>
+                </div>
+            </fieldset>
+            <div class="mt-5 sm:text-right">
+                <button type="submit"
+                    class="p-3 w-full sm:w-40 rounded-md font-semibold uppercase tracking-wider bg-green-500 hover:bg-green-600 text-white focus:outline-none focus:shadow-outline transition duration-150">Create
+                    lodge</button>
+            </div>
+        </form>
+    </div>
+</main>

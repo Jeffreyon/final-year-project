@@ -1,0 +1,57 @@
+{{#section 'title'}}
+<title>Log in &bull; Keybase</title>
+{{/section}}
+
+<div class=" p-8 pt-12 mx-3 lg:mt-16 lg:p-10 bg-white rounded-lg relative">
+    <div class=" text-center lg:text-left">
+        <p class=" flex w-full justify-center"><a href="/" class=" text-lg font-semibold"><img src="/img/logo.svg" class=" w-auto h-6 mr-2"
+                            alt="logo"></a></p>
+        <h2 class=" text-lg lg:text-2xl text-center text-gray-800 font-semibold leading-tight px-6 lg:p-0 mt-4">Log in to your account</h2>
+        {{#if messages.length}}
+        <div class=" mt-4 text-left">
+            {{#each messages}}
+            <p class="flex justify-between items-center bg-red-200 text-red-700 px-3 py-2 text-sm rounded-md border border-red-300">
+                {{this}}
+                <button id="flash-close" class="p-1 leading-none focus:outline-none ml-1"><i class="fa fa-times leading-none"></i></button>
+            </p>
+            {{/each}}
+        </div>
+        {{/if}}
+        <div class=" mt-8 text-left">
+            <form id="auth-form" action="/log-in" method="POST" class=" mt-6">
+                <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+                <input type="hidden" name="redirect" value="{{redirect}}">
+                <div>
+                    <label for="email" class=" font-semibold text-gray-600">Email</label>
+                    <input required="true" id="email" type="email" name="email"
+                        class=" w-full px-4 py-3 bg-gray-200 mt-1 border border-gray-400 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                    <p id="emailError" class="text-xs"></p>
+                </div>
+                <div class=" mt-2">
+                    <label for="password" class=" font-semibold text-gray-600">Password</label>
+                    <div class=" mt-1 relative">
+                        <input type="password" id="password" name="password"
+                            class=" w-full px-4 py-3 bg-gray-200 rounded-md border border-gray-400 focus:outline-none focus:shadow-outline transition duration-150">
+                        <button id="showPassword" class="absolute focus:outline-none text-gray-600 -ml-10 p-1 h-12">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5" viewBox="0 0 576 512">
+                                <path
+                                    d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z" />
+                                </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-5 h-5 hidden" viewBox="0 0 640 512">
+                                <path
+                                    d="M634 471L36 3.51A16 16 0 0 0 13.51 6l-10 12.49A16 16 0 0 0 6 41l598 467.49a16 16 0 0 0 22.49-2.49l10-12.49A16 16 0 0 0 634 471zM296.79 146.47l134.79 105.38C429.36 191.91 380.48 144 320 144a112.26 112.26 0 0 0-23.21 2.47zm46.42 219.07L208.42 260.16C210.65 320.09 259.53 368 320 368a113 113 0 0 0 23.21-2.46zM320 112c98.65 0 189.09 55 237.93 144a285.53 285.53 0 0 1-44 60.2l37.74 29.5a333.7 333.7 0 0 0 52.9-75.11 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64c-36.7 0-71.71 7-104.63 18.81l46.41 36.29c18.94-4.3 38.34-7.1 58.22-7.1zm0 288c-98.65 0-189.08-55-237.93-144a285.47 285.47 0 0 1 44.05-60.19l-37.74-29.5a333.6 333.6 0 0 0-52.89 75.1 32.35 32.35 0 0 0 0 29.19C89.72 376.41 197.08 448 320 448c36.7 0 71.71-7.05 104.63-18.81l-46.41-36.28C359.28 397.2 339.89 400 320 400z" />
+                                </svg>
+                        </button>
+                        <p id="passError" class="text-xs"></p>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button type="submit"
+                        class="text-white focus:outline-none focus:shadow-outline font-semibold w-full p-3 lg:px-8 hover:bg-green-600 rounded-md uppercase tracking-wider bg-green-500">log in</button>
+                </div>
+            </form>
+        </div>
+        <p class="mt-3 text-sm font-semibold text-center">Don't have an account? <a
+                href="/sign-up{{#if redirect}}?redirect={{redirect}}{{/if}}" class=" text-green-600">Get started</a></p>
+    </div>
+</div>

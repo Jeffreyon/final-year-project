@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard &bull; Keybase</title>
+    {{#checkEnv}}
+        {{#if development}}
+            <link rel="stylesheet" href="/css/tailwind.css">
+            <link rel="stylesheet" href="/vendor/fontawesome/css/all.css">
+            <link rel="stylesheet" href="/css/custom.css">
+        {{/if}}
+        {{#if production}}
+            <link rel="stylesheet" href="/dist/css/keybase.min.css">
+        {{/if}}
+    {{/checkEnv}}
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    {{#if messages.length}}
+    <div class="text-left">
+        {{#each messages}}
+        <p class="flex justify-between items-center bg-gray-900 text-white p-4">
+            {{this}}
+            <button id="flash-close" class="p-1 leading-none focus:outline-none ml-1"><i
+                    class="fa fa-times leading-none"></i></button>
+        </p>
+        {{/each}}
+    </div>
+    {{/if}}
+    <div class=" py-10 md:py-20">
+        {{{body}}}
+    </div>
+
+    {{#checkEnv}}
+        {{#if development}}
+            <script src="/js/jquery.js"></script>
+            <script src="/js/global.js"></script>
+            <script src="/js/layouts_dashboard.js"></script>
+        {{/if}}
+        {{#if production}}
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+            <script src="/dist/js/keybase.min.js"></script>
+        {{/if}}
+    {{/checkEnv}}
+</body>
+
+</html>

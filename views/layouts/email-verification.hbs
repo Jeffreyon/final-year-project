@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{{_sections.title}}}
+    {{#checkEnv}}
+        {{#if development}}
+            <link rel="stylesheet" href="/css/tailwind.css">
+            <link rel="stylesheet" href="/css/custom.css">
+        {{/if}}
+        {{#if production}}
+            <link rel="stylesheet" href="/dist/css/keybase.min.css">
+        {{/if}}
+    {{/checkEnv}}
+</head>
+<body class=" bg-gray-200 text-gray-900">
+    <header></header>
+    {{{body}}}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<div class="inline-block rounded-md overflow-hidden shadow-sm bg-white">
+    <img data-src={{imgUrl}} alt="room in {{metadata.area}}" class="w-full h-48 sm:h-40 object-cover lazy">
+    <div class="p-5 pb-3">
+        <div class="flex text-xs uppercase tracking-wider text-gray-600">
+            <div class=" mr-1 font-semibold">{{metadata.roomType}} in {{metadata.area}}</div>
+        </div>
+        <div class=" mt-2 items-baseline">
+            <span class="font-semibold text-lg">Room {{metadata.roomNumber}} - </span>
+            <span class="text-gray-700">{{displayPrice}}/yr</span>
+        </div>
+        <p class="text-xs text-gray-600 mt-2"><i class="fa fa-tag text-gray-500"></i> Booked <time>{{createdAt}}</time>
+        </p>
+    </div>
+    <div class="border-t border-gray-300"></div>
+    <div class="flex justify-between items-baseline px-5 py-3">
+        {{#bookingStatus status}}
+        {{#if cancelled}}
+        <p class="text-sm font-semibold text-gray-700"><i class="fa fa-times"></i> Cancelled</p>
+        {{/if}}
+        {{#if pending}}
+        <p class="text-sm font-semibold text-gray-600"><i class="fa fa-clock text-gray-600"></i> Pending</p>
+        {{/if}}
+        {{#if confirmed}}
+        <p class="text-sm font-semibold text-gray-700"><i class="fa fa-check text-green-600"></i> Confirmed</p>
+        {{/if}}
+        {{/bookingStatus}}
+        <a href="/account/bookings/{{_id}}"
+            class="px-3 py-2 rounded-md tracking-wider bg-green-200 text-green-600 text-sm font-semibold hover:bg-green-100 duration-150">View
+            booking<i class="fa fa-arrow-right ml-1"></i></a>
+    </div>
+</div>

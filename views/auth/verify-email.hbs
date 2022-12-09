@@ -1,0 +1,24 @@
+{{#section 'title'}}
+<title>Verify your email &bull; Keybase</title>
+{{/section}}
+
+<main class=" h-screen flex justify-center items-center">
+    <div>
+        <div class="w-full md:w-4/6 mx-auto text-center">
+            <p class=" flex w-full justify-center"><a href="/" class=" text-lg font-semibold"><img src="/img/logo.svg" class=" w-auto h-6 mr-2"
+                            alt="logo"></a></p>
+            <h1 class=" text-2xl font-semibold mt-6">Verify your email</h1>
+            <p class=" text-sm">You need to verify your account's email before logging into our service</p>
+        </div>
+        <div class="w-full mx-auto p-5 bg-white shadow-md rounded-md mt-6">
+            <p>We will verify your email by sending a link to your inbox</p>
+            <form action="/verify-email" method="POST">
+                <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+                <input type="hidden" name="email" value="{{userEmail}}">
+                <button type="submit"
+                    class="text-white focus:outline-none focus:shadow-outline mt-4 font-semibold w-full p-4 hover:bg-green-600 rounded-md uppercase tracking-wider bg-green-500 transition duration-150">send
+                    me verification link</button>
+            </form>
+        </div>
+    </div>
+</main>

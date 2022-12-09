@@ -1,0 +1,57 @@
+<main class="w-full md:max-w-3xl xl:max-w-5xl px-3 mx-auto">
+    <div>
+        <a href="/dashboard/lodges/{{room.lodge}}/{{room._id}}" class=" text-gray-600 hover:text-gray-700 text-sm mr-5"><i
+                class="fa fa-arrow-left mr-1"></i>Back to Room</a>
+        <a href="/dashboard" class=" text-gray-600 hover:text-gray-700 text-sm"><i class="fa fa-th-large mr-1"></i>Dashboard</a>
+    </div>
+    <div class="mt-8">
+        <h2 class=" text-lg font-semibold text-gray-700">Edit Flat {{room.roomNumber}}</h2>
+        <div class="my-5 border-t border-gray-400"></div>
+        <form action="/dashboard/edit-room" method="POST" class="w-full sm:w-2/3 md:w-1/2 xl:w-2/5">
+            <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+            <input type="hidden" name="roomId" value="{{room._id}}">
+            <input type="hidden" name="lodge" value="{{room.lodge}}">
+            <div class=" mt-2">
+                <label for="price" class=" font-semibold text-gray-600">Price</label>
+                <input type="number" id="price" name="price" value="{{room.price}}" required="true"
+                    class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+            </div>
+            <div class=" mt-2">
+                <label for="description" class=" font-semibold text-gray-600">Description</label>
+                <input type="text" id="description" name="description" value="{{room.description}}" required="true"
+                    class=" w-full px-4 py-3 bg-gray-200 border border-gray-400 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+            </div>
+            <div class="border-t mt-4 border-gray-400"></div>
+            {{#each room.roomAmenities}}
+            <fieldset class="p-3 border border-gray-400 rounded-md mt-4" name="amenities">
+                <legend class=" text-gray-600 font-semibold uppercase text-sm px-2 -mx-2">{{roomSection}}</legend>
+                {{#each amenities}}
+                <div class="amenity-template mt-2">
+                    <div class="relative">
+                        <select
+                            class="select-box-arrow appearance-none w-full px-4 py-3 bg-white shadow border border-gray-300 mt-1 rounded-md focus:outline-none focus:shadow-outline transition duration-150"
+                            name="{{../roomSection}}Amenities" id="{{../roomSection}}Amenities" required="true">
+                            {{#each this}}
+                            <option value="{{amenityItem}}" {{selected}}>{{amenityItem}}</option>
+                            {{/each}}
+                        </select>
+                        <i class="fa fa-chevron-down absolute top-0 right-0 my-5 mr-4 text-gray-600"></i>
+                    </div>
+                </div>
+                {{/each}}
+                <div class="mt-5 flex items-center justify-between border-t border-gray-400">
+                    <button
+                        class="px-3 add-amenity py-2 mt-3 rounded-md font-semibold text-sm tracking-wider bg-green-200 text-green-600 focus:outline-none focus:shadow-outline transition duration-150"><i
+                            class="fa fa-plus mr-1"></i>Add amenity</button>
+                    <button class="mt-3 remove-amenity font-semibold text-sm text-red-500 focus:outline-none"><i
+                            class="fa fa-times mr-1"></i>Remove</button>
+                </div>
+            </fieldset>
+            {{/each}}
+            <div class="mt-5 sm:text-right">
+                <button type="submit"
+                    class="p-3 w-full sm:w-40 rounded-md font-semibold uppercase tracking-wider bg-green-500 hover:bg-green-600 text-white focus:outline-none focus:shadow-outline transition duration-150">Save room</button>
+            </div>
+        </form>
+    </div>
+</main>

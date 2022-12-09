@@ -1,0 +1,215 @@
+{{#section 'title'}}
+<title>Booking in {{lodgeDetails.name}} &bull; Keybase</title>
+{{/section}}
+
+<main class=" max-w-3xl lg:max-w-5xl mx-auto px-3 pt-12">
+    <h1 class="text-xl font-semibold">Booking in {{lodgeDetails.name}}</h1>
+    <!-- User dashboard -->
+    <div class="grid gap-4 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6">
+        <div class="inline-block rounded-md overflow-hidden shadow-sm bg-white">
+            <div class="relative">
+                <img data-src={{imgUrl}} alt="room in {{metadata.area}}" class="w-full h-48 sm:h-40 object-cover lazy">
+                <div class="absolute top-0 right-0 py-1 px-2 bg-gray-900 text-white border border-gray-800 m-2 rounded-md">
+                    <p class="text-xs font-semibold tracking-wider text-gray-500">Booking ID</p>
+                    <p class="font-semibold text-sm uppercase tracking-widest">#{{txnRef}}</p>
+                </div>
+            </div>
+            <div class="p-5 pb-3">
+                <div class="flex text-xs uppercase tracking-wider text-gray-600">
+                    <div class=" mr-1 font-semibold">{{metadata.roomType}} in {{metadata.area}}</div>
+                </div>
+                <div class=" mt-2 items-baseline">
+                    <span class="font-semibold text-lg">Room {{metadata.roomNumber}} - </span>
+                    <span class="text-gray-700">{{displayPrice}}/yr</span>
+                </div>
+                <p class="text-xs text-gray-600 mt-2"><i class="fa fa-tag text-gray-500"></i> Booked
+                    <time>{{createdAt}}</time>
+                </p>
+            </div>
+            <div class="border-t border-gray-300"></div>
+            <div class="flex justify-between items-baseline px-5 py-3">
+                {{#bookingStatus status}}
+                {{#if cancelled}}
+                <p class="text-sm font-semibold text-gray-700"><i class="fa fa-times"></i> Cancelled</p>
+                {{/if}}
+                {{#if pending}}
+                <p class="text-sm font-semibold text-gray-600"><i class="fa fa-clock text-gray-600"></i> Pending</p>
+                {{/if}}
+                {{#if confirmed}}
+                <p class="text-sm font-semibold text-gray-700"><i class="fa fa-check text-green-600"></i> Confirmed
+                </p>
+                {{/if}}
+                {{/bookingStatus}}
+                <a href="/rooms/{{roomId}}" target="_blank"
+                    class="px-3 py-2 rounded-md tracking-wider bg-green-200 text-green-600 text-sm font-semibold hover:bg-green-100 duration-150">View
+                    room<i class="fa fa-external-link-alt ml-1"></i></a>
+            </div>
+        </div>
+        <div class="bg-white border border-gray-300 rounded-md">
+            <div class="py-3 px-4 font-semibold text-sm uppercase tracking-wide text-gray-700">Rental Details</div>
+            <div class="border-t"></div>
+            <div class="py-3 px-4 flex justify-between">
+                <ul>
+                    <li class="mb-1 font-semibold">Contract</li>
+                    <li class="mb-1 font-semibold">Room type</li>
+                    <li class="font-semibold">Rent</li>
+                </ul>
+                <ul>
+                    <li class="mb-1">Yearly</li>
+                    <li class="mb-1">{{metadata.roomType}}</li>
+                    <li>{{displayPrice}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class=" md:row-start-1 md:col-start-2 md:col-span-2 bg-white border border-gray-300 rounded-md">
+            <div class="py-3 px-4 font-semibold text-sm uppercase tracking-wide text-gray-700">Lodge Details</div>
+            <div class="border-t"></div>
+            <div class="py-3 px-4">
+                <div class="flex">
+                    <span><i class="fa fa-hotel text-green-600 text-lg"></i></span>
+                    <div class="ml-4">
+                        <p class="text-xs font-semibold text-gray-700">Name</p>
+                        <p class="text-lg">{{lodgeDetails.name}}</p>
+                    </div>
+                </div>
+                <div class="flex mt-4">
+                    <span><i class="fa fa-door-open text-green-600 text-lg"></i></span>
+                    <div class="ml-4">
+                        <p class="text-xs font-semibold text-gray-700">Room number</p>
+                        <p class="text-lg">Room {{metadata.roomNumber}}</p>
+                    </div>
+                </div>
+                <div class="flex mt-4">
+                    <span><i class="fa fa-user text-green-600 text-lg"></i></span>
+                    <div class="ml-4">
+                        <p class="text-xs font-semibold text-gray-700">Landlord</p>
+                        <p class="text-lg">{{lodgeDetails.landlord.name}}</p>
+                    </div>
+                </div>
+                <div class="flex mt-4">
+                    <span><i class="fa fa-phone-alt text-green-600 text-lg"></i></span>
+                    <div class="ml-4">
+                        <p class="text-xs font-semibold text-gray-700">Landlord contact</p>
+                        <p class="text-lg">{{lodgeDetails.landlord.phone}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" md:col-span-2 bg-white border border-gray-300 rounded-md">
+            <div class="py-3 px-4 font-semibold text-sm uppercase tracking-wide text-gray-700">Payment Summary</div>
+            <div class="border-t"></div>
+            <div class="py-3 px-4">
+                <div class="flex justify-between">
+                    <span class="font-semibold">Rent</span>
+                    <span class="font-semibold">{{displayPrice}}</span>
+                </div>
+                {{#bookingStatus status}}
+                {{#if cancelled}}
+                <div class=" p-3 bg-blue-200 border border-blue-300 rounded-md text-sm  my-3">
+                    <p class="font-semibold text-blue-800">You cancelled this booking, you could try finding another
+                        room to book</p>
+                </div>
+                <div class="lg:flex justify-between flex-row-reverse mt-4 mb-2">
+                    <a href="/rooms"
+                        class=" text-white focus:outline-none inline-block focus:shadow-outline font-semibold py-3 px-6 hover:bg-green-600 rounded-md uppercase tracking-wider bg-green-500 transition duration-150">Find
+                        a room</a>
+                </div>
+                {{/if}}
+                {{#if pending}}
+                <div class=" p-3 bg-yellow-200 border border-yellow-300 rounded-md text-sm  my-3">
+                    <p class="font-semibold text-yellow-800">To secure your payment, visit this place and confirm it
+                        before approving the rent
+                        payment to the landlord</p>
+                </div>
+                <div class="lg:flex justify-between flex-row-reverse mt-4 mb-2">
+                    <button id="confirm-booking"
+                        class="p-3 px-5 w-full lg:w-auto text-center rounded-md font-semibold uppercase tracking-wider bg-green-500 hover:bg-green-600 text-white focus:outline-none focus:shadow-outline transition duration-150"><i
+                            class="fa fa-check mr-2"></i>Confirm Booking</button>
+                    <button id="cancel-booking"
+                        class="p-3 w-full lg:w-auto text-center rounded-md font-semibold text-red-600 mt-2 sm:mt-0 focus:outline-none">Cancel
+                        Booking</button>
+                </div>
+                {{/if}}
+                {{#if confirmed}}
+                <div class=" p-3 bg-green-200 border border-green-300 rounded-md text-sm  my-3">
+                    <p class="font-semibold text-green-800">You confirmed this booking, thanks for using Keybase.
+                        Have a nice stay in your new lodge</p>
+                </div>
+                <div class="lg:flex justify-between flex-row-reverse mt-4 mb-2">
+                    <button
+                        class=" text-green-500 focus:outline-none tracking-wider cursor-not-allowed font-semibold px-6 sm:px-10 lg:w-full py-3 lg:py-4 rounded-md uppercase bg-green-100 border border-green-200">
+                        <i class="fa fa-check mr-1"></i>Confirmed</button>
+                </div>
+                {{/if}}
+                {{/bookingStatus}}
+            </div>
+        </div>
+    </div>
+
+    <div class=" mt-3 sm:mt-8">
+        <p class="font-semibold text-lg mb-2">Map location</p>
+        <!-- Map -->
+        <div id="map" class="bg-gray-400"></div>
+    </div>
+</main>
+
+{{#bookingStatus status}}
+    {{#if pending}}
+        <div id="confirm-booking-modal"
+            class="booking-modal hidden w-screen h-screen fixed top-0 left-0 z-500 items-center">
+            <div class=" w-full h-full bg-black absolute inset-0 opacity-50"></div>
+            <div class=" w-11/12 sm:w-7/12 lg:w-4/12 bg-white mx-auto z-50 font-normal rounded-md overflow-hidden shadow-lg">
+                <div class="px-6 py-3 border-b border-gray-300">
+                    <p class=" font-semibold">Confirm booking</p>
+                </div>
+                <form action="/account/bookings/{{_id}}/confirm" method="POST" class="px-6 py-4">
+                    <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+                    <input type="hidden" name="bid" value="{{_id}}">
+                    <div class=" p-4 bg-yellow-200 border border-yellow-300 rounded-md text-sm  my-3">
+                        <p class="font-semibold text-yellow-800">To secure your payment, visit this place and confirm it before
+                            approving the rent payment to the landlord</p>
+                    </div>
+                    <div class="py-2 mt-2">
+                        <p>To confirm this booking and approve the rent to the landlord, Enter your account password below</p>
+                        <input required="true" id="password" type="password" name="password" placeholder="Your password"
+                            class=" w-full px-4 py-3 bg-gray-200 mt-2 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                    </div>
+                    <div class=" flex justify-end py-3">
+                        <button
+                            class="modal-close block sm:inline py-2 px-6 rounded-md font-semibold uppercase tracking-wider border border-gray-400 focus:outline-none focus:shadow-outline transition duration-150">Close</button>
+                        <button type="submit"
+                            class="p-3 px-5 ml-3 block text-center rounded-md font-semibold uppercase tracking-wider bg-green-500 hover:bg-green-600 text-white focus:outline-none focus:shadow-outline transition duration-150"><i
+                                class="fa fa-check mr-2"></i>Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="cancel-booking-modal"
+            class="booking-modal hidden w-screen h-screen fixed top-0 left-0 z-500 items-center">
+            <div class=" w-full h-full bg-black absolute inset-0 opacity-50"></div>
+            <div class=" w-11/12 sm:w-7/12 lg:w-4/12 bg-white mx-auto z-50 font-normal rounded-md overflow-hidden shadow-lg">
+                <div class="px-6 py-3 border-b border-gray-300">
+                    <p class=" font-semibold">Cancel booking</p>
+                </div>
+                <form action="/account/bookings/{{_id}}/cancel" method="POST" class="px-6 py-4">
+                    <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+                    <input type="hidden" name="bid" value="{{_id}}">
+                    <div class="py-2 mt-2">
+                        <p>You are about to cancel the booking you have at {{lodgeDetails.name}}, to continue, Enter your
+                            account password below</p>
+                        <input required="true" id="password" type="password" name="password" placeholder="Your password"
+                            class=" w-full px-4 py-3 bg-gray-200 mt-2 rounded-md focus:outline-none focus:shadow-outline transition duration-150">
+                    </div>
+                    <div class=" flex justify-end py-3">
+                        <button
+                            class="modal-close block sm:inline py-2 px-6 rounded-md font-semibold uppercase tracking-wider border border-gray-400 focus:outline-none focus:shadow-outline transition duration-150">Close</button>
+                        <button type="submit"
+                            class="p-3 px-5 ml-3 block text-center rounded-md font-semibold uppercase tracking-wider bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:shadow-outline transition duration-150"></i>Cancel
+                            booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {{/if}}
+{{/bookingStatus}}

@@ -1,0 +1,169 @@
+
+/* hide number field arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* style price range */
+.noUi-target{
+    background: #dedede;
+    border: none;
+    box-shadow: none;
+}
+.noUi-horizontal{
+    height: 7px;
+}
+.noUi-connect{
+    background:#48bb78;
+}
+.noUi-horizontal .noUi-handle {
+    width: 10px;
+    height: 21px;
+    right: -5px;
+    top: -7px;
+    outline: none;
+}
+.noUi-handle {
+    border: none;
+    border-radius: 5px;
+    background: #48bb78;
+    cursor: default;
+    box-shadow: none;
+}
+.noUi-handle:before, .noUi-handle:after {
+    display: none;
+}
+
+
+/* hero */
+
+.hero-image{
+    z-index: -1;
+    background-image: url("/img/hero.jpg");
+    background-size: cover;
+    height: 40vh;
+}
+@media (min-width: 640px) {
+    .hero, .hero-content{
+        height: 450px;
+    }
+    .hero-image{
+        height: 450px;
+    }
+}
+.hero-image::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.651);
+}
+
+/* owl carousel */
+.owl-carousel .owl-stage{
+    display: flex;
+    align-items: baseline;
+}
+#carousel .nav{
+    top: calc(50% - 2rem/2);
+}
+.owl-theme .owl-nav.disabled + .owl-dots {
+    position: absolute;
+    width: 100%;
+    bottom: 4%;
+}
+.owl-theme .owl-dots .owl-dot span{
+    width: 7px;
+    height: 7px;
+}
+.owl-carousel .owl-item img {
+    display: block;
+    width: auto;
+}
+.owl-theme .owl-dots .owl-dot.active span{
+    background: #48bb78;
+}
+.owl-theme .owl-dots .owl-dot:focus{
+    outline: none;
+}
+.owl-theme .owl-dots .owl-dot:hover span{
+    background: #48bb78;
+}
+
+/* Top offset */
+@media (min-width: 768px) {
+    .top-offset-20{
+        top: 20px
+    }
+}
+
+/* Room hero image */
+.roomHero{
+    height: 300px;
+}
+.image-overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: .2s ease-in-out;
+}
+.image-overlay:hover{
+    background-color: #0000002a;
+}
+@media (min-width: 640px) {
+    .roomHero{
+        height: 70vh;
+    }
+}
+
+/* z-index */
+.-z-1{
+    z-index: -1;
+}
+.z-400{
+    z-index: 400;
+}
+.z-500{
+    z-index: 500;
+}
+.z-600{
+    z-index: 600;
+}
+
+/* lazy load image placeholder*/
+img.lazy {
+    content: '';
+    background: #c9d1d8;
+    display: block;
+    border: 0;
+}
+
+/* new booking*/
+.item.info-card {
+    height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.tooltip {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    background-color: #3a4250;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: absolute;
+    width: 300px;
+    left: 0;
+    border-radius: 4px;
+    z-index: 100;
+    display: none;
+}
+
+#map {
+    height: 400px;
+    border-radius: .2em;
+}

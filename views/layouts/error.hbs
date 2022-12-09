@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keybase</title>
+    {{#checkEnv}}
+        {{#if development}}
+            <link rel="stylesheet" href="/css/tailwind.css">
+        {{/if}}
+        {{#if production}}
+            <link rel="stylesheet" href="/dist/css/keybase.min.css">
+        {{/if}}
+    {{/checkEnv}}
+</head>
+
+<body>
+    <header class="fixed w-full border-b border-gray-300">
+        <div class="mx-auto max-w-5xl sm:flex sm:justify-between items-center px-3 py-4">
+            <div class=" flex justify-between items-center">
+                <div class=" text-xl font-semibold text-gray-900">
+                    <a href="/" class=" flex items-center text-gray-700"><img src="/img/logo.svg" class=" w-auto h-6 mr-2"
+                            alt="logo">Keybase</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {{{body}}}
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<main class="w-full md:max-w-3xl xl:max-w-5xl px-3 mx-auto">
+    <a href="/dashboard" class=" text-gray-600 hover:text-gray-700 text-sm"><i class="fa fa-th-large mr-1"></i>Dashboard</a>
+    <div class="mt-8">
+        <div class="flex justify-between">
+            <h2 class=" text-lg font-semibold text-gray-700">Lodges<span
+                    class="px-2 bg-green-200 text-green-600 rounded-full text-sm ml-2">{{lodges.length}}</span></h2>
+            {{#if lodges.length}}
+            <div>
+                <a href="/dashboard/add-lodge"
+                    class="px-3 py-2 mt-3 rounded-md font-semibold text-sm tracking-wider bg-green-200 text-green-600 focus:outline-none focus:shadow-outline transition duration-150"><i
+                        class="fa fa-hotel mr-2"></i>Create lodge</a>
+            </div>
+            {{/if}}
+        </div>
+        <div class="my-5 border-t border-gray-400"></div>
+        <div class="mt-5">
+            {{#if lodges.length}}
+                {{#each lodges}}
+                <a href="/dashboard/lodges/{{_id}}"
+                    class="flex py-3 px-4 -mx-4 sm:rounded-md hover:bg-white hover:shadow-sm transition duration-100">
+                    <div class="flex">
+                        <p class=" font-semibold mr-3">{{name}}</p>&hyphen;
+                        <p class=" text-gray-700 ml-3">{{roomType}}</p>
+                        <p class=" text-gray-700 ml-3"><span class="font-semibold">{{roomCount}}</span> room{{greater roomCount}}</p>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="text-center my-6 mx-3">
+                <a href="/dashboard/add-lodge"
+                    class="inline-block text-white focus:outline-none focus:shadow-outline font-semibold w-full sm:w-auto p-4 px-8 hover:bg-green-600 rounded-md uppercase tracking-wider bg-green-500 transition duration-150"><i
+                        class="fa fa-hotel mr-2"></i>Create lodge</a>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</main>

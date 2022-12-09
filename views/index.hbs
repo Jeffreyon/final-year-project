@@ -1,0 +1,125 @@
+{{#section 'title'}}
+<title>Book new places to stay in UNN &bull; Keybase</title>
+{{/section}}
+
+{{#section 'nouislider-css'}}
+    <link rel="stylesheet" href="/vendor/nouislider/nouislider.css">
+{{/section}}
+
+<!-- search form -->
+<main>
+    <div class="sm:relative hero sm:h-56">
+        <div class=" relative">
+            <div class="hero-image w-full absolute inset-0 bottom-0">
+            </div>
+        </div>
+        <div class="hero-content max-w-5xl mx-auto sm:px-3 block relative sm:flex sm:flex-row sm:items-center justify-between">
+            <div class="w-full sm:max-w-sm md:max-w-md text-center sm:text-left sm:mt-0 px-5 sm:px-0">
+                <h1 class=" text-3xl sm:text-4xl font-semibold sm:font-bold text-white leading-tight lg:text-5xl pt-16 pb-3 sm:py-0">Book new places to stay in UNN.</h1>
+                <p class=" mt-3 text-white hidden sm:block">Find rooms quicker, book instantly, and get ready to move in, all without going under the sun.</p>
+            </div>
+            <div class="w-full z-50 mt-2 sm:mt-0 sm:max-w-sm sm:-mb-48 sm:px-3">
+                {{> searchForm}}
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="py-16 md:py-40 max-w-5xl mx-auto px-3 relative">
+            <div class=" text-center">
+                <h1 class=" text-2xl font-semibold">Why Keybase</h1>
+                <p class=" text-gray-700 text-sm">A faster way of moving in</p>
+            </div>
+            <div class="md:flex justify-between mt-8">
+                <div class="w-full md:w-1/3 text-center md:mx-3 my-5">
+                    <div>
+                        <span class=" inline-flex justify-center items-center h-12 w-12 bg-green-200 text-green-500 rounded-full">
+                            <i class="fa fa-couch text-2xl"></i>
+                        </span>
+                    </div>
+                    <h2 class="font-semibold mt-3 mb-1 text-lg">Very convenient</h2>
+                    <p>You can easily find lodge rooms anytime, anywhere.</p>
+                </div>
+                <div class="w-full md:w-1/3 text-center md:mx-3 my-5">
+                    <div>
+                        <span class=" inline-flex justify-center items-center h-12 w-12 bg-green-200 text-green-500 rounded-full">
+                            <i class="fa fa-piggy-bank text-2xl"></i>
+                        </span>
+                    </div>
+                    <h2 class="font-semibold mt-3 mb-1 text-lg">Money Wise</h2>
+                    <p>No agent fees, our landlords set the price and we deliver the best deals on lodges.</p>
+                </div>
+                <div class="w-full md:w-1/3 text-center md:mx-3 my-5">
+                    <div>
+                        <span class=" inline-flex justify-center items-center h-12 w-12 bg-green-200 text-green-500 rounded-full">
+                            <i class="fa fa-hand-holding-usd text-2xl"></i>
+                        </span>
+                    </div>
+                    <h2 class="font-semibold mt-3 mb-1 text-lg">Refund Anytime</h2>
+                    <p>If the place doesn't match the listing, you can cancel and get a refund.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="pb-16 md:pb-40 max-w-5xl mx-auto px-3 relative">
+            <div class=" text-center">
+                <h1 class=" text-2xl font-semibold">Where to stay</h1>
+                <p class=" text-gray-700 text-sm">Student neighbourhoods in school</p>
+            </div>
+            <div class="mt-12 md:flex">
+                <a href="/rooms?area=hilltop" class="block md:w-1/3 overflow-hidden rounded relative md:mx-2 my-4">
+                    <img src="/img/heroo.jpg" alt="Hilltop UNN" class=" object-cover w-full h-40">
+                    <div class=" w-full h-full absolute top-0 flex items-center justify-center">
+                        <p class="uppercase font-semibold text-white tracking-wide">Hilltop</p>
+                    </div>
+                </a>
+                <a href="/rooms?area=odenigwe" class="block md:w-1/3 overflow-hidden rounded relative md:mx-2 my-4">
+                    <img src="/img/heroo.jpg" alt="Hilltop UNN" class=" object-cover w-full h-40">
+                    <div class=" w-full h-full absolute top-0 flex items-center justify-center">
+                        <p class="uppercase font-semibold text-white tracking-wide">Odenigwe</p>
+                    </div>
+                </a>
+                <a href="/rooms?area=odim" class="block md:w-1/3 overflow-hidden rounded relative md:mx-2 my-4">
+                    <img src="/img/heroo.jpg" alt="Hilltop UNN" class=" object-cover w-full h-40">
+                    <div class=" w-full h-full absolute top-0 flex items-center justify-center">
+                        <p class="uppercase font-semibold text-white tracking-wide">Odim</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="pb-16 md:pb-40 max-w-5xl mx-auto px-3 relative">
+            <div class=" text-center">
+                <h1 class=" text-2xl font-semibold">Live your way</h1>
+                <p class=" text-gray-700 text-sm">Find what type of place suits you best</p>
+            </div>
+            <div class="mt-12">
+                <div class="md:flex flex-row-reverse justify-between items-center">
+                    <img src="/img/hero2.jpg" class="w-full md:w-1/2 rounded-md">
+                    <div class="w-full md:w-1/3 mt-4 md:mt-0">
+                        <h2 class=" text-lg md:text-2xl font-semibold">Self Con</h2>
+                        <p class=" text-gray-700 mt-1">One room that fits in all, these type of places come with a personal bathroom, wardrobe and a balcony, perfect for you and a roommate</p>
+                        <a href="/rooms?roomType=self+con" class=" px-6 py-3 rounded-md bg-green-500 uppercase tracking-wide text-white font-semibold mt-3 block md:inline-block text-center hover:bg-green-600 transition duration-150 focus:shadow-outline">Find a self con</a>
+                    </div>
+                </div>
+                <div class="md:flex justify-between items-center mt-20">
+                    <img src="/img/hero2.jpg" class="w-full md:w-1/2 rounded-md">
+                    <div class="w-full md:w-1/3 mt-4 md:mt-0">
+                        <h2 class=" text-lg md:text-2xl font-semibold">Flat</h2>
+                        <p class=" text-gray-700 mt-1">Perfect for you and your buddies. Enjoy the quietness of these places, they come with a living room, full kitchen and a balcony.</p>
+                        <a href="/rooms?roomType=flat" class=" px-6 py-3 rounded-md bg-green-500 uppercase tracking-wide text-white font-semibold mt-3 block md:inline-block text-center hover:bg-green-600 transition duration-150 focus:shadow-outline">Find a flat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</main>
+
+
+{{#section 'index-js'}}
+    <script src="/vendor/nouislider/nouislider.js"></script>
+    <script src="/js/wNumb.js"></script>
+    <script src="/js/nouislider_config.js"></script>
+{{/section}}
