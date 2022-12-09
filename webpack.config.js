@@ -2,7 +2,7 @@ const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: "./public/bundle_entry",
-    mode: "development",
+    mode: process.env.NODE_ENV,
     output: {
         path: `${__dirname}/public/dist/js`,
         filename: "keybase.min.js",
