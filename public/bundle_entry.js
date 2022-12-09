@@ -3,7 +3,7 @@ require("./css/tailwind.css");
 require("./css/custom.css");
 
 // js files
-require("./js/jquery");
+require("jquery");
 require("./js/global");
 require("./js/layouts_auth");
 require("./js/layouts_dashboard");
