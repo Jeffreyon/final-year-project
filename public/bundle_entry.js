@@ -2,6 +2,7 @@
 require("./vendor/nouislider/nouislider.css");
 require("./vendor/owlcarousel/owl.carousel.css");
 require("./vendor/owlcarousel/owl.theme.green.css");
+require("./vendor/fontawesome/css/all.css");
 
 require("./css/tailwind.css");
 require("./css/custom.css");
