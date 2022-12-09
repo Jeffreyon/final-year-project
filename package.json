@@ -5,8 +5,8 @@
     "scripts": {
         "mkdirs": "npx mkdirp public/dist/css/ && npx mkdirp public/dist/js/",
         "tailwind": "npx tailwind build -i public/css/tailwind-build.css -o public/css/tailwind.css",
-        "concat:css": "npx concat -o public/dist/css/keybase.css public/css/tailwind.css public/vendor/nouislider/nouislider.css public/vendor/fontawesome/css/all.css public/vendor/owlcarousel/owl.carousel.css public/vendor/owlcarousel/owl.carousel.css public/css/custom.css",
-        "concat:js": "npx concat -o public/dist/js/keybase.js public/js/wNumb.js public/vendor/nouislider/nouislider.js public/vendor/owlcarousel/owl.carousel.js public/js/global.js public/js/layouts_auth.js public/js/layouts_dashboard.js public/js/layouts_main.js public/js/nouislider_config.js public/js/owlcarousel_config.js",
+        "concat:css": "concat -o public/dist/css/keybase.css public/css/tailwind.css public/vendor/nouislider/nouislider.css public/vendor/fontawesome/css/all.css public/vendor/owlcarousel/owl.carousel.css public/vendor/owlcarousel/owl.carousel.css public/css/custom.css",
+        "concat:js": "concat -o public/dist/js/keybase.js public/js/wNumb.js public/vendor/nouislider/nouislider.js public/vendor/owlcarousel/owl.carousel.js public/js/global.js public/js/layouts_auth.js public/js/layouts_dashboard.js public/js/layouts_main.js public/js/nouislider_config.js public/js/owlcarousel_config.js",
         "minify:css": "npx cleancss -o public/dist/css/keybase.min.css public/dist/css/keybase.css",
         "minify:js": "npx uglifyjs -o public/dist/js/keybase.min.js public/dist/js/keybase.js",
         "build:css": "npm run tailwind && npm run concat:css && npm run minify:css",
