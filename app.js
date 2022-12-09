@@ -191,6 +191,7 @@ app.use(
         contentSecurityPolicy: {
             directives: {
                 "img-src": ["*", "'self'", "https://source.unsplash.com"],
+                "script-src": ["unsafe-eval"],
             },
         },
     })
