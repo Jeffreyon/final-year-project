@@ -3,20 +3,10 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "mkdirs": "npx mkdirp public/dist/css/ && npx mkdirp public/dist/js/",
-        "tailwind_build": "npx tailwind build -i public/css/tailwind-build.css -o public/css/tailwind.css",
-        "concat:css": "npx concat -o public/dist/css/keybase.css public/css/tailwind.css public/vendor/nouislider/nouislider.css public/vendor/fontawesome/css/all.css public/vendor/owlcarousel/owl.carousel.css public/vendor/owlcarousel/owl.carousel.css public/css/custom.css",
-        "concat:js": "npx concat -o public/dist/js/keybase.js public/js/wNumb.js public/vendor/nouislider/nouislider.js public/vendor/owlcarousel/owl.carousel.js public/js/global.js public/js/layouts_auth.js public/js/layouts_dashboard.js public/js/layouts_main.js public/js/nouislider_config.js public/js/owlcarousel_config.js",
-        "minify:css": "npx cleancss -o public/dist/css/keybase.min.css public/dist/css/keybase.css",
-        "minify:js": "npx uglifyjs -o public/dist/js/keybase.min.js public/dist/js/keybase.js",
-        "build-css": "npm run tailwind_build && npm run concat:css && npm run minify:css",
-        "build-js": "npm run concat:js && npm run minify:js",
-        "build": "npm run mkdirs && npx npm-run-all --parallel build-*",
-        "start": "npm run build && node app.js",
-        "prod": "set NODE_ENV=production && npx nodemon app.js",
-        "dev": "nodemon -r dotenv/config app.js",
-        "install-pkgs": "npm install autoprefixer bcryptjs body-parser cloudinary connect-flash connect-mongo cookie-parser crypto csurf dotenv express express-handlebars express-logger express-session express-validator file-system helmet mongoose morgan multer nodemailer paystack postcss serve-favicon tailwindcss wnumb --save",
-        "install-dev": "npm install concat mkdirp nodemon npm-run-all uglify-js --save-dev"
+        "mkdirs": "npx mkdirp public/dist/",
+        "tailwind_build": "npm run mkdirs && npx tailwind build -i public/css/tailwind-build.css -o public/css/tailwind.css",
+        "build": "npm run tailwind_build && webpack && node app.js",
+        "dev": "nodemon -r dotenv/config app.js"
     },
     "main": "app.js",
     "author": "Jeffrey Onuigbo",
@@ -43,7 +33,9 @@
         "express-session": "^1.17.3",
         "express-validator": "^6.14.2",
         "file-system": "^1.2.2",
+        "fs": "^0.0.1-security",
         "helmet": "^6.0.1",
+        "mini-css-extract-plugin": "^2.7.2",
         "mongoose": "^6.8.0",
         "morgan": "^1.10.0",
         "multer": "^1.4.5-lts.1",
@@ -56,9 +48,13 @@
     },
     "devDependencies": {
         "concat": "^1.0.3",
+        "css-loader": "^6.7.2",
         "mkdirp": "^1.0.4",
         "nodemon": "^2.0.20",
         "npm-run-all": "^4.1.5",
-        "uglify-js": "^3.17.4"
+        "style-loader": "^3.3.1",
+        "uglify-js": "^3.17.4",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1"
     }
 }
