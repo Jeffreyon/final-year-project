@@ -1,6 +1,6 @@
 // css files
-require("./css/custom.css");
 require("./css/tailwind.css");
+require("./css/custom.css");
 
 // js files
 const noui = require("./vendor/nouislider/nouislider");

@@ -1,39 +1,37 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{{_sections.title}}}
-    {{#checkEnv}}
-        {{#if development}}
-            <link rel="stylesheet" href="/css/tailwind.css">
-            <link rel="stylesheet" href="/vendor/fontawesome/css/all.css">
-            <link rel="stylesheet" href="/css/custom.css">
-        {{/if}}
-        {{#if production}}
-            <link rel="stylesheet" href="/dist/css/keybase.min.css">
-        {{/if}}
-    {{/checkEnv}}
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {{{_sections.title}}}
+        {{#checkEnv}}
+            {{#if development}}
+                <link rel="stylesheet" href="/css/tailwind.css" />
+                <link rel="stylesheet" href="/vendor/fontawesome/css/all.css" />
+                <link rel="stylesheet" href="/css/custom.css" />
+            {{/if}}
+            {{#if production}}
+                <link rel="stylesheet" href="/dist/css/keybase.min.css" />
+            {{/if}}
+        {{/checkEnv}}
+    </head>
 
-<body class=" text-gray-900 bg-white flex">
-    <div class=" w-full h-screen block -z-1 fixed">
-        <img src="/img/hero2.jpg" class=" h-screen w-full object-cover">
-    </div>
-    <div class=" w-full max-w-md mx-auto my-10">
-        {{{body}}}
-    </div>
-    {{#checkEnv}}
-        {{#if development}}
-            <script src="/js/jquery.js"></script>
-            <script src="/js/global.js"></script>
-            <script src="/js/layouts_auth.js"></script>
-        {{/if}}
-        {{#if production}}
-            <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-            <script src="/dist/js/keybase.min.js"></script>
-        {{/if}}
-    {{/checkEnv}}
-</body>
+    <body class="text-gray-900 bg-white flex">
+        <div class="w-full h-screen block -z-1 fixed">
+            <img src="/img/hero2.jpg" class="h-screen w-full object-cover" />
+        </div>
+        <div class="w-full max-w-md mx-auto my-10">
+            {{{body}}}
+        </div>
+        {{#checkEnv}}
+            {{#if development}}
+                <script src="/js/jquery.js"></script>
+                <script src="/js/global.js"></script>
+                <script src="/js/layouts_auth.js"></script>
+            {{/if}}
+            {{#if production}}
+                <script src="/dist/js/keybase.min.js"></script>
+            {{/if}}
+        {{/checkEnv}}
+    </body>
 </html>
