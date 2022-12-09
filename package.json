@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "mkdirs": "npx mkdirp public/dist/",
-        "tailwind_build": "npm run mkdirs && npx tailwind build -i public/css/tailwind-build.css -o public/css/tailwind.css",
+        "tailwind_build": "npm run mkdirs && tailwind build -i public/css/tailwind-build.css -o public/css/tailwind.css",
         "build": "npm run tailwind_build && webpack",
         "start": "node app.js",
         "dev": "nodemon -r dotenv/config app.js"
