@@ -47,7 +47,7 @@ module.exports.controller = (app) => {
             paystack.transaction
                 .initialize(form)
                 .then((response) => {
-                    console.log(response);
+                    console.log("hey");
                     // redirect to checkout
                     return res.redirect(302, response.data.authorization_url);
                 })

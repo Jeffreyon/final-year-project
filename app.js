@@ -192,6 +192,7 @@ app.use(
             directives: {
                 "img-src": ["*", "'self'", "https://source.unsplash.com"],
                 "script-src": ["'self'", "'unsafe-eval'"],
+                "form-action": ["*", "http://localhost:3000/new-booking/pay"],
             },
         },
     })
